@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\style2.css" />
+    <None Include="wwwroot\Cursor\MouseCursor1.png" />
+    <None Include="wwwroot\Cursor\MouseCursor2.png" />
+    <None Include="wwwroot\Cursor\MouseCursor3.png" />
+    <None Include="wwwroot\Introduction background\Blue_Archive.png" />
+    <None Include="wwwroot\Introduction background\Chrono_Ark.png" />
+    <None Include="wwwroot\Introduction background\Dark_Wood.png" />
+    <None Include="wwwroot\Introduction background\Dohna_Dohna_Lets_Do_Bad_Things_Together.png" />
+    <None Include="wwwroot\Introduction background\Ender_Lilies_Quietus_of_the_Knights.png" />
+    <None Include="wwwroot\Introduction background\Frost_Punk.png" />
+    <None Include="wwwroot\Introduction background\Genshin_Impact.png" />
+    <None Include="wwwroot\Introduction background\Girls_Frontline_2.png" />
+    <None Include="wwwroot\Introduction background\Honkai_Impact_3rd.png" />
+    <None Include="wwwroot\Introduction background\Library_Of_Ruina.png" />
+    <None Include="wwwroot\Introduction background\Limbus_Company.png" />
+    <None Include="wwwroot\Introduction background\OMORI.png" />
+    <None Include="wwwroot\Introduction background\Reverse_Collapse_Code_Name_Bakery.png" />
+    <None Include="wwwroot\Introduction background\This_War_Of_Mine.png" />
+    <None Include="wwwroot\Introduction.html" />
+    <None Include="wwwroot\Website_BGM\1番輝く星.mp3" />
+    <None Include="wwwroot\Website_BGM\Artcore_Fluffybunny_-_Rosy_Retrospection.mp3" />
+    <None Include="wwwroot\Website_BGM\Artcore_Reno_-_Cryptosystem.mp3" />
+    <None Include="wwwroot\Website_BGM\Artcore_Tsurugi_-_Descenders.mp3" />
+    <None Include="wwwroot\Website_BGM\Cyberpunk_Edgerunners_I_Really_Want_to_Stay_At_Your_House_by_Rosa_Walton_Music_Video.mp3" />
+    <None Include="wwwroot\Website_BGM\Delirious_-_Jujutsu_Kaisen.mp3" />
+    <None Include="wwwroot\Website_BGM\dndndn.dn.mp3" />
+    <None Include="wwwroot\Website_BGM\Dohna_Dohna_-ドーナドーナのうた%28Full OP%29.mp3" />
+    <None Include="wwwroot\Website_BGM\Haloweak_NARWHAL_Punishing_Gray_Raven_OST_-_极地暗流 パニシング_グレイレイヴンOfficial.mp3" />
+    <None Include="wwwroot\Website_BGM\Library_of_Ruina_-_Angela_Realization_Theme.mp3" />
+    <None Include="wwwroot\Website_BGM\Limitless_Gojo.mp3" />
+    <None Include="wwwroot\Website_BGM\Malkuth battle.mp3" />
+    <None Include="wwwroot\Website_BGM\Mili_-_Iron_Lotus.mp3" />
+    <None Include="wwwroot\Website_BGM\Mili_-_String_Theocracy_Library_of_Ruina_theme_song.mp3" />
+    <None Include="wwwroot\Website_BGM\Watch_Me.mp3" />
+    <None Include="wwwroot\Website_BGM\[_Library_Of_Ruina_]_Children_of_the_City.mp3" />
+    <None Include="wwwroot\Website_BGM\[_Library_Of_Ruina_]_Gone_Angels.mp3" />
+    <None Include="wwwroot\Website_BGM\「Cyberangel」_-_Honkai_Impact_3.mp3" />
+    <None Include="wwwroot\Website_BGM\ブルーアーカイブ_Blue_Archive_OST_35._Morose_Dreamer.mp3" />
+    <None Include="wwwroot\Website_BGM\メズマライザー_初音ミク重音テトSV.mp3" />
+    <None Include="wwwroot\Website_BGM\廻廻奇譚_-_Eve_MV.mp3" />
+    <None Include="wwwroot\Website_BGM\美波カワキヲアメクMV.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="5.3.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,752 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        /* Now Playing UI */
+        #nowPlaying {
+            position: fixed;
+            bottom: 20px;
+            left: 20px; /* Start positioned in view */
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-bottom: 2px solid white; /* Optional white border */
+            border-radius: 5px; /* Keep the border radius */
+            transition: left 0.5s ease-in-out, visibility 0.5s ease; /* Smooth transition */
+            visibility: hidden; /* Initially visible */
+            z-index: 1; /* Ensure it's above everything */
+            text-decoration: underline; /* Optional underline for the text */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Added text shadow for readability */
+        } 
+
+
+        /* Basic styling */
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom right, #000000, #434343);
+            color: white; 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            cursor: url('Cursor/MouseCursor1.png'), auto; /* Default cursor */
+        }
+
+        /* Background image container */
+        #bgImages {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(100%);
+            transition: background-image 1s ease-in-out, opacity 1s ease-in-out; 
+            opacity: 1; 
+        }
+
+        /* Centered title */
+        h1 {
+            font-size: 3.5em;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 1; 
+            animation: fadeIn 2s forwards, fadeOut 2s 4s forwards; 
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Button styles */
+        .button {
+            position: relative;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+            color: rgba(0, 0, 0, 1); /* Black text with slight transparency */
+            padding: 12px 20px;
+            font-size: 1.2em;
+            font-weight: 700;
+            border: none;
+            width: 180px;
+            height: 60px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.2s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+            pointer-events: auto;
+            overflow: hidden; /* Prevent overflow from edges */
+            text-align: center;
+            transform: skewX(-30deg); /* Skew the button itself */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+        }
+
+        /* Ensure text inside button remains straight (not skewed) */
+        .button-content {
+            position: relative;
+            transform: skewX(30deg); /* Counteract the button's skew */
+            z-index: 2;
+            color: black; /* Text remains black by default */
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Left and right edges without skew */
+        .button::before, .button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 20px; /* Width of the colored edges */
+            z-index: 1;
+            transition: transform 0.3s ease; /* Added transition for scaling */
+        }
+
+        .button::before {
+            left: -10px; /* Align to the left edge */
+            background-color: #ea4ef8; /* Pink edge on the left */
+        }
+
+        .button::after {
+            right: -10px; /* Align to the right edge */
+            background-color: #35f2f4; /* Cyan edge on the right */
+        }
+
+        /* Hover state */
+        .button:hover {
+            background-color: rgba(255, 255, 255, 1); /* Fully white background */
+            color: black; /* Text remains black on hover */
+            cursor: url('Cursor/MouseCursor2.png'), auto; /* Clickable cursor */
+            transform: scale(1.05) skewX(-30deg); /* Slight scaling and retain skew */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Increased shadow on hover */
+        }
+
+        /* Scale edges on hover */
+        .button:hover::before, .button:hover::after {
+            transform: scaleY(1.1); /* Slightly scale the edges up */
+        }
+
+        /* Hover text color */
+        .button:hover .button-content {
+            color: rgba(0, 0, 0, 1); /* Keep text black when hovered */
+        }
+
+        /* Focus state (ensure text is visible) */
+        .button:focus {
+            outline: none; /* Remove default outline */
+            box-shadow: 0 0 5px rgba(255, 255, 225, 1); /* Subtle glow on focus */
+            background-color: rgba(255, 255, 255, 1); /* Ensure background remains white */
+        }
+
+        /* Positioning buttons */
+        nav {
+            display: flex;
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: fadeIn 2s 6s forwards;
+            justify-content: space-around;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Inspired by text styling */
+        .container { 
+            position: absolute; 
+            bottom: 20px; 
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+            text-align: center; /* Center text inside the container */
+        }
+
+        .inspired-by {
+            font-size: 1.5em;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: 3px;
+            white-space: nowrap; /* Prevents wrapping */
+        }
+
+        .animated-title {
+            font-size: 1.5em;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            border-right: 5px solid white; /* Cursor effect */
+            display: inline; 
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 2s, cursor 0.4s step-end infinite alternate; /* Combined animations */
+        }
+
+        /* Typing and cursor animations */
+        @keyframes typing {
+            0% { width: 0; opacity: 1; } /* Start with width 0 */
+            100% { width: 100%; } /* End with full width */
+        }
+
+        @keyframes cursor {
+            50% { border-color: transparent; } /* Makes the cursor invisible */
+        }
+
+        .audio-visualizer-container {
+            position: absolute;
+            bottom: 70px; /* Adjust this value to move it up */
+            left: 40px; /* Adjust this value to move it right */
+            width: 100%; /* Make it responsive */
+            max-width: 300px; /* Set a maximum width */
+            height: 200px; /* Height for better visibility */
+            opacity: 1; /* Ensure full opacity */
+            background: none; /* Ensure no background layer */
+        }
+
+        #audio-visualizer {
+            width: 100%;
+            height: 100%;
+            background: transparent; /* Keep the canvas background transparent */
+            border-radius: 10px; /* Optional: Add rounded corners for aesthetics */
+            opacity: 1; /* Ensure full visibility */
+            will-change: transform; /* Enable smooth rendering */
+            transform: translateZ(0); /* Force hardware acceleration */
+        }
+
+        #audio {
+            display: none; /* Hide audio element */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Background Images Container -->
+    <div id="bgImages"></div>
+
+    <!-- Title -->
+    <h1>Advance presents</h1>
+
+    <!-- Audio Visualizer Canvas -->
+    <div class="audio-visualizer-container">
+        <canvas id="audio-visualizer"></canvas>
+    </div>
+
+    <!-- Navigation with one button to go to the homepage -->
+    <nav>
+        <button class="button" onclick="location.href='/'" aria-label="Home">
+            <span class="button-content">Go to Home</span>
+        </button>
+    </nav>
+
+
+    <!-- "Inspired by" text -->
+    <div class="container">
+        <span class="inspired-by">Inspired by</span>
+        <span class="animated-title" id="inspiredText"></span>
+    </div>
+
+    <!-- Now Playing UI -->
+    <div id="nowPlaying" style="visibility: hidden; position: absolute; left: -450px; transition: left 1s ease, visibility 1s ease; color: white; text-decoration: underline;">
+        Now Playing: <span id="currentTrack">Mili - String Theocracy</span>
+    </div>
+
+    <!-- 1st Add more BGM & Path -->
+    <audio id="backgroundMusic" preload="auto">
+        <source src="Website_BGM/Mili_-_String_Theocracy_Library_of_Ruina_theme_song.mp3" type="audio/mpeg">
+        <source src="Website_BGM/Artcore_Fluffybunny_-_Rosy_Retrospection.mp3" type="audio/mpeg">
+        <source src="Website_BGM/Artcore_Reno_-_Cryptosystem.mp3" type="audio/mpeg">
+        <source src="Website_BGM/Artcore_Tsurugi_-_Descenders.mp3" type="audio/mpeg">
+        <source src="Website_BGM/Delirious_-_Jujutsu_Kaisen.mp3" type="audio/mpeg">
+        <source src="Website_BGM/Limitless_Gojo.mp3" type="audio/mpeg">
+        <source src="Website_BGM/dndndn.dn.mp3" type="audio/mpeg">
+        <source src="Website_BGM/ブルーアーカイブ_Blue_Archive_OST_35._Morose_Dreamer.mp3" type="audio/mpeg">
+        <source src="Website_BGM/Library_of_Ruina_-_Angela_Realization_Theme.mp3" type="audio/mpeg">
+        <source src="Website_BGM/Haloweak_NARWHAL_Punishing_Gray_Raven_OST_-_极地暗流 パニシング_グレイレイヴンOfficial.mp3" type="audio/mpeg">
+        <source src="Website_BGM/[_Library_Of_Ruina_]_Children_of_the_City.mp3" type="audio/mpeg">
+        <source src="Website_BGM/Mili_-_Iron_Lotus.mp3" type="audio/mpeg">
+        <source src="Website_BGM/[_Library_Of_Ruina_]_Gone_Angels.mp3" type="audio/mpeg">
+        <source src="Website_BGM/美波カワキヲアメクMV.mp3" type="audio/mpeg">
+        <source src="Website_BGM/「Cyberangel」_-_Honkai_Impact_3.mp3" type="audio/mpeg">
+        <source src="Website_BGM/Dohna_Dohna_-ドーナドーナのうた(Full OP).mp3" type="audio/mpeg">
+        <source src="Website_BGM/1番輝く星.mp3" type="audio/mpeg">
+        <source src="Website_BGM/メズマライザー_初音ミク重音テトSV.mp3" type="audio/mpeg">
+        <source src="Website_BGM/廻廻奇譚_-_Eve_MV.mp3" type="audio/mpeg">
+        <source src="Website_BGM/Cyberpunk_Edgerunners_I_Really_Want_to_Stay_At_Your_House_by_Rosa_Walton_Music_Video.mp3" type="audio/mpeg">
+        <source src="Website_BGM/Watch_Me.mp3" type="audio/mpeg">
+        <!-- Add more sources as needed -->
+    </audio>
+
+    <script>
+        // 2nd Title for the BGM
+        const musicNames = [
+            "Mili - String Theocracy",
+            "Artcore Fluffybunny - Rosy Retrospection",
+            "Artcore Reno - Cryptosystem",
+            "Artcore Tsurugi - Descenders",
+            "Delirious - Jujutsu Kaisen",
+            "Limitless Gojo",
+            "dndndn.dn",
+            "ブルーアーカイブ Blue Archive OST 35. Morose Dreamer",
+            "Library of Ruina - Angela Realization Theme",
+            "【Haloweak】NARWHAL 「Punishing: Gray Raven OST - 极地暗流」 【パニシング:グレイレイヴン】Official",
+            "[ Library Of Ruina ] Children of the City",
+            "Mili - Iron Lotus",
+            "[ Library Of Ruina ] Gone Angels",
+            "Crying for Rain - 美波 (Minami) MV",
+            "「Cyberangel」- Honkai Impact 3",
+            "[REDACTED] -ドーナドーナのうた(Full OP)",
+            "1番輝く星",
+            "Mesmerizer / Hatsune Miku ＆ Kasane Teto",
+            "廻廻奇譚 - Eve MV",
+            "Cyberpunk: Edgerunners | “I Really Want to Stay At Your House” by Rosa Walton | Music Video",
+            "Watch Me"
+        ];
+
+        // 3rd Path for BGM
+        const musicFiles = [
+            "Website_BGM/Mili_-_String_Theocracy_Library_of_Ruina_theme_song.mp3",
+            "Website_BGM/Artcore_Fluffybunny_-_Rosy_Retrospection.mp3",
+            "Website_BGM/Artcore_Reno_-_Cryptosystem.mp3",
+            "Website_BGM/Artcore_Tsurugi_-_Descenders.mp3",
+            "Website_BGM/Delirious_-_Jujutsu_Kaisen.mp3",
+            "Website_BGM/Limitless_Gojo.mp3",
+            "Website_BGM/dndndn.dn.mp3",
+            "Website_BGM/ブルーアーカイブ_Blue_Archive_OST_35._Morose_Dreamer.mp3",
+            "Website_BGM/Library_of_Ruina_-_Angela_Realization_Theme.mp3",
+            "Website_BGM/Haloweak_NARWHAL_Punishing_Gray_Raven_OST_-_极地暗流 パニシング_グレイレイヴンOfficial.mp3",
+            "Website_BGM/[_Library_Of_Ruina_]_Children_of_the_City.mp3",
+            "Website_BGM/Mili_-_Iron_Lotus.mp3",
+            "Website_BGM/[_Library_Of_Ruina_]_Gone_Angels.mp3",
+            "Website_BGM/美波カワキヲアメクMV.mp3",
+            "Website_BGM/「Cyberangel」_-_Honkai_Impact_3.mp3",
+            "Website_BGM/Dohna_Dohna_-ドーナドーナのうた(Full OP).mp3",
+            "Website_BGM/1番輝く星.mp3",
+            "Website_BGM/メズマライザー_初音ミク重音テトSV.mp3",
+            "Website_BGM/廻廻奇譚_-_Eve_MV.mp3",
+            "Website_BGM/Cyberpunk_Edgerunners_I_Really_Want_to_Stay_At_Your_House_by_Rosa_Walton_Music_Video.mp3",
+            "Website_BGM/Watch_Me.mp3"
+        ];
+
+        let musicIndex = 0; // To keep track of which track is currently playing
+        let musicStarted = true; // Flag to track if music has started
+        let isMouseDown = false; // Track whether the left mouse button is held down
+        let nowPlayingTimeout; // Declare the timeout variable
+
+        // Show the Now Playing UI
+        function showNowPlaying() {
+            const nowPlayingElement = document.getElementById('nowPlaying');
+
+            nowPlayingElement.style.visibility = 'visible'; // Make it visible
+            nowPlayingElement.style.left = '20px'; // Slide in from the left
+
+            // Clear any existing timeout to reset the duration
+            clearTimeout(nowPlayingTimeout);
+
+            // Hide the Now Playing UI after a delay
+            nowPlayingTimeout = setTimeout(() => {
+                nowPlayingElement.style.left = '-450px'; // Slide out
+                setTimeout(() => {
+                    nowPlayingElement.style.visibility = 'hidden'; // Hide after sliding out
+                }, 500); // Wait for sliding out to finish before hiding
+            }, 7000); // Display for 7 seconds
+        }
+
+        // Play background music and show Now Playing UI
+        function playBackgroundMusic() {
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            backgroundMusic.play(); // Start playing the music
+            showNowPlaying(); // Show the Now Playing UI
+        }
+
+        // Call playBackgroundMusic on window load
+        window.onload = function() {
+            const backgroundMusic = document.getElementById('backgroundMusic');
+
+            // Listen for when the current track ends
+            backgroundMusic.onended = playNextTrack;
+
+            playBackgroundMusic(); // Start playing the first track
+        };
+
+        function playNextTrack() {
+            // Increment musicIndex by 1 and wrap around if at the end
+            musicIndex = (musicIndex + 1) % musicFiles.length; 
+            playCurrentMusic(); // Call to play the next track
+        }
+
+        function playCurrentMusic() {
+            const backgroundMusic = document.getElementById('backgroundMusic');
+
+            // Check if the music is already playing
+            if (backgroundMusic.src !== musicFiles[musicIndex]) {
+                backgroundMusic.src = musicFiles[musicIndex]; // Set the current track source
+                backgroundMusic.loop = false; // Ensure looping is disabled
+            backgroundMusic.play(); // Start playing the music
+
+                // Update "Now Playing" text and show UI
+                updateNowPlayingText(musicNames[musicIndex]); // Use titles from the musicNames array
+                showNowPlaying(); // Show Now Playing UI for the current track
+
+                // Ensure visualizer starts when the audio plays
+                audio.addEventListener('canplay', () => {
+                    audioContext.resume().then(() => {
+                        const source = audioContext.createMediaElementSource(backgroundMusic);
+                        source.connect(analyser);
+                        analyser.connect(audioContext.destination); // Connect analyser to the audio context destination
+                        drawVisualizer(); // Start the visualizer when the audio can play
+                    });
+                });
+
+                // Remove any existing 'ended' event listener to prevent stacking
+                backgroundMusic.removeEventListener('ended', playNextTrack);
+                // Listen for when the current track ends
+                backgroundMusic.addEventListener('ended', playNextTrack);
+            }
+        }
+
+        // Show the Now Playing UI
+        function showNowPlaying() {
+            const nowPlayingElement = document.getElementById('nowPlaying');
+            nowPlayingElement.style.visibility = 'visible'; // Make it visible
+            nowPlayingElement.style.transition = 'left 0.5s ease-in-out, opacity 0.5s ease-in-out'; // Smooth transition
+            nowPlayingElement.style.left = '20px'; // Slide in from the left
+            nowPlayingElement.style.opacity = '1'; // Ensure it's fully visible
+
+            // Clear any existing timeout to reset the duration
+            clearTimeout(nowPlayingTimeout);
+
+            // Set a timeout to hide the UI after a certain duration
+            nowPlayingTimeout = setTimeout(() => {
+                nowPlayingElement.style.left = '-450px'; // Move out of view
+
+                // Fade out before hiding
+                setTimeout(() => {
+                    nowPlayingElement.style.opacity = '0'; // Start fading out
+                }, 500); // Start fading after the slide out starts
+
+                setTimeout(() => {
+                    nowPlayingElement.style.visibility = 'hidden'; // Hide after sliding out and fading
+                }, 1000); // Wait for the fade-out to finish before hiding
+            }, 7000); // Display for 7 seconds
+        }
+
+
+        // Array of titles to cycle through and their corresponding links
+        const titles = [
+            "Library Of Ruina",
+            "Reverse Collapse Code Name Bakery",
+            "Chrono Ark",
+            "OMORI",
+            "Dark Wood",
+            "This War Of Mine",
+            "Ender Lilies Quietus of the Knights",
+            "Frost Punk",
+            "Limbus Company",
+            "Genshin Impact",
+            "Honkai Impact 3rd",
+            "Blue Archive",
+            "Girls Frontline 2",
+            "Dohna Dohna Lets Do Bad Things Together"
+        ];
+
+        const links = [
+            "https://shiravune.com/archives/458",
+            "https://store.steampowered.com/app/1256670/Library_Of_Ruina/",
+            "https://store.steampowered.com/app/1127700/Reverse_Collapse_Code_Name_Bakery/",
+            "https://store.steampowered.com/app/1188930/Chrono_Ark/",
+            "https://store.steampowered.com/app/1150690/OMORI/",
+            "https://store.steampowered.com/app/274520/Darkwood/",
+            "https://store.steampowered.com/app/282070/This_War_of_Mine/",
+            "https://store.steampowered.com/app/1369630/ENDER_LILIES_Quietus_of_the_Knights/",
+            "https://store.steampowered.com/app/323190/Frostpunk/",
+            "https://store.steampowered.com/app/1973530/Limbus_Company/",
+            "https://genshin.hoyoverse.com/en/home",
+            "https://honkaiimpact3.hoyoverse.com/global/en-us/home",
+            "https://bluearchive.nexon.com/home#a",
+            "https://gf2exilium.sunborngame.com/",
+        ];
+
+        let index = 0; // Track the current title index
+        let backgroundIndex = 0; // Track the current background index
+
+        // Select all elements that should be clickable
+        const clickableElements = document.querySelectorAll('.button'); // Adjust the selector as needed
+
+        // Add event listener for mouse down on the whole document
+        document.addEventListener('mousedown', () => {
+            isMouseDown = true; // Set mouse down state
+            // Set cursor immediately to MouseCursor3.png
+            document.body.style.cursor = "url('Cursor/MouseCursor3.png'), auto"; // Set clicked cursor
+        });
+
+        // Add event listener for mouse up on the whole document
+        document.addEventListener('mouseup', () => {
+            isMouseDown = false; // Reset mouse down state
+            // Reset cursor based on hover state
+            document.body.style.cursor = "url('Cursor/MouseCursor1.png'), auto"; // Reset to default cursor
+        });
+
+        // Add event listeners for each clickable element
+        clickableElements.forEach(element => {
+            element.addEventListener('mouseover', () => {
+                // Change cursor to MouseCursor3.png if mouse is down
+                document.body.style.cursor = isMouseDown ? "url('Cursor/MouseCursor3.png'), auto" : "url('Cursor/MouseCursor2.png'), auto"; // Set hover or clicked cursor
+            });
+
+            element.addEventListener('mouseout', () => {
+                // Reset cursor when not hovering
+                document.body.style.cursor = isMouseDown ? "url('Cursor/MouseCursor3.png'), auto" : "url('Cursor/MouseCursor1.png'), auto"; // Reset to default cursor
+            });
+
+            // Prevent background click event from firing
+            element.addEventListener('click', (event) => {
+                event.stopPropagation();
+            });
+        });
+
+        // Event listener for body click
+        document.body.addEventListener('click', function () {
+            if (!musicStarted) { // Only play if it hasn't been started
+                const backgroundMusic = document.getElementById('backgroundMusic');
+                backgroundMusic.loop = true; // Set to not loop
+                playCurrentMusic(); // Play the current music
+                musicStarted = true; // Set flag to true
+
+                // Change track on click
+                backgroundMusic.addEventListener('ended', playNextTrack); // Ensure that playNextTrack is called on track end
+            } else {
+                // Move to the next track and play it
+                musicIndex = (musicIndex + 1) % musicFiles.length; // Increment the index
+                playCurrentMusic(); // Play the next track
+            }
+        });
+
+        // Add this function to handle the click on the inspired title
+        function handleInspiredClick() {
+            window.open(links[index], "_blank"); // Opens the link in a new tab
+        }
+
+        // Add event listener for the inspired text
+        const inspiredTextElement = document.getElementById("inspiredText");
+        inspiredTextElement.addEventListener('click', handleInspiredClick);
+
+        function typeTitle(title, callback) {
+            const inspiredTextElement = document.getElementById("inspiredText");
+            inspiredTextElement.innerHTML = ""; // Clear the text first
+            inspiredTextElement.style.opacity = 1; // Ensure it becomes visible
+
+            let i = 0; // Index for character
+            const typingInterval = setInterval(() => {
+                inspiredTextElement.innerHTML += title.charAt(i); // Add next character
+                i++;
+                if (i === title.length) {
+                    clearInterval(typingInterval); // Clear interval when done
+                    setTimeout(callback, 3000); // Call back after a delay 3 seconds
+                }
+            }, 50); // Speed of typing 0.05 seconds
+        }
+
+        function changeTitleAndBackground() {
+            const nextTitle = titles[index];
+            index = (index + 1) % titles.length; // Move to the next title
+
+            // Change background image based on the index
+            const bgImagesElement = document.getElementById("bgImages");
+
+            // Load the next image
+            const nextImage = new Image();
+            nextImage.src = `Introduction background/${titles[backgroundIndex].replace(/ /g, '_')}.png`;
+
+            // Start fading out the current image
+            bgImagesElement.style.opacity = 0;
+
+            // Change the background image after fading out
+            setTimeout(() => {
+                bgImagesElement.style.backgroundImage = `url('${nextImage.src}')`;
+                bgImagesElement.style.opacity = 1; // Fade back in
+
+                backgroundIndex = (backgroundIndex + 1) % titles.length; // Cycle through backgrounds
+
+                // Show buttons after fading in
+                const buttons = document.querySelectorAll('.button');
+                buttons.forEach(button => {
+                    button.style.display = 'block'; // Set buttons to display
+                    button.removeAttribute('disabled'); // Enable the button
+                });
+            }, 1000); // Time for fading out
+
+            // Type the next title
+            typeTitle(nextTitle, changeTitleAndBackground);
+        }
+
+        function updateNowPlayingText(trackName) {
+            const currentTrackElement = document.getElementById('currentTrack');
+            currentTrackElement.textContent = trackName; // Update the text content
+        }
+
+        // Start the title and background change
+        changeTitleAndBackground();
+
+        // Get references to the HTML elements
+        const audio = document.getElementById('backgroundMusic');
+        const canvas = document.getElementById('audio-visualizer');
+        const canvasContext = canvas.getContext('2d');
+
+        // Create an audio context and an analyser
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const analyser = audioContext.createAnalyser();
+        analyser.fftSize = 2048; // Set FFT size for frequency data
+        const bufferLength = analyser.frequencyBinCount; // Number of frequency data points
+        const dataArray = new Uint8Array(bufferLength); // Create an array to hold frequency data
+
+        // Resize canvas function
+        function resizeCanvas() {
+            canvas.width = canvas.clientWidth; // Set the canvas width to the container's width
+            canvas.height = canvas.clientHeight; // Set the canvas height to the container's height
+        }
+
+        // Call the function on window resize
+        window.addEventListener('resize', resizeCanvas);
+
+        // Call it initially to set the size
+        resizeCanvas();
+
+        let bars = []; // Array to store the current bars and their positions
+        const totalBars = 250; // Set fixed number of bars to 250
+        const frequencyBoost = 1.1; // Increase this to make the visualizer more sensitive to frequencies
+        const maxBarHeight = canvas.height * 0.8; // Cap the maximum height to 80% of canvas height
+        const barWidthFactor = 0.8; // Factor to adjust bar width
+
+        function drawVisualizer() {
+            requestAnimationFrame(drawVisualizer);
+
+            // Get the frequency data from the analyser
+            analyser.getByteFrequencyData(dataArray);
+
+            // Clear the canvas
+            canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Calculate bar width and spacing
+            const barWidth = (canvas.width / totalBars) * barWidthFactor; // Adjust bar width
+            const spacing = (canvas.width - (barWidth * totalBars)) / (totalBars - 1); // Calculate spacing between bars
+            let barHeight;
+
+            // Update the positions of existing bars
+            for (let i = 0; i < bars.length; i++) {
+                let bar = bars[i];
+
+                // Move each bar left
+                bar.position -= 3; // Adjust this value for speed of movement
+
+                // Only draw the bar if it is still on the screen
+                if (bar.position >= -barWidth) {
+                    // Create gradient for the visualizer bar
+                    const gradient = canvasContext.createLinearGradient(0, canvas.height / 2 - bar.height / 2, 0, canvas.height / 2 + bar.height / 2);
+                    gradient.addColorStop(0, 'rgba(0, 200, 255, 1)'); // Cyan on top
+                    gradient.addColorStop(0.5, 'rgba(255, 255, 255, 1)'); // White in the middle
+                    gradient.addColorStop(1, 'rgba(255, 165, 0, 1)'); // Orange at the bottom
+
+                    // Apply gradient to the fill style
+                    canvasContext.fillStyle = gradient;
+
+                    // Draw the bar at its current position (first instance)
+                    canvasContext.fillRect(bar.position, canvas.height / 2 - bar.height / 2, barWidth, bar.height);
+
+                    // Draw the duplicated bar with a slight offset for dynamic effect
+                    canvasContext.fillRect(bar.position + 1, canvas.height / 2 - bar.height / 2, barWidth, bar.height); // Slight offset for brightness
+                }
+            }
+
+            // If the last bar is off screen, create a new bar
+            if (bars.length === 0 || bars[bars.length - 1].position < canvas.width - barWidth - spacing) {
+                // Calculate frequency index dynamically
+                const frequencyIndex = Math.floor(Math.random() * bufferLength); // Randomly sample frequency data
+                let frequencyValue = Math.pow(dataArray[frequencyIndex], frequencyBoost); // Use a frequency value based on existing bars
+                barHeight = Math.max(frequencyValue * 0.5, 1); // Scale down bar height and cap
+                barHeight = Math.min(barHeight, maxBarHeight); // Cap the height to 80% of canvas height
+
+                // Add a new bar to the bars array (starting from the right edge)
+                bars.push({
+                    height: barHeight,
+                    position: canvas.width // Position starts on the right
+                });
+            }
+
+            // Remove bars that have moved off the left side of the canvas
+            bars = bars.filter(bar => bar.position > -barWidth);
+        }
+
+        // Start the visualizer
+        drawVisualizer();
+
+        // Start visualizer when the audio is played
+        audio.addEventListener('canplay', () => {
+            audioContext.resume().then(() => {
+                const source = audioContext.createMediaElementSource(audio);
+                source.connect(analyser);
+                analyser.connect(audioContext.destination); // Connect analyser to the audio context destination
+
+                audio.play(); // Play the audio
+                drawVisualizer(); // Start the visualizer
+            }).catch(error => {
+                console.error('Error with audio context:', error);
+            });
+        });
+
+        // Resize the canvas if the window is resized
+        window.addEventListener('resize', resizeCanvas);
+
+        // Check if the audio file can be loaded
+        audio.addEventListener('error', function(e) {
+            console.error("Audio failed to load:", e);
+        });
+
+        // Wait for the page to fully load
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = document.querySelector('h1');
+            const nav = document.querySelector('nav');
+            const buttons = document.querySelectorAll('button');
+
+            // Function to skip the animation and show the buttons
+            function skipTitleAnimation() {
+                // Stop the title's animation
+                title.style.animation = 'none';
+                title.style.opacity = 0; // Immediately hide the title
+
+                // Make the navigation (buttons) visible immediately
+                nav.style.animation = 'none';  // Stop the fade-in animation
+                nav.style.opacity = 1;  // Show the nav instantly
+
+                // Enable the buttons
+                buttons.forEach(button => {
+                button.disabled = false;
+                });
+
+                // Remove the event listener after it runs to avoid further clicks doing anything
+                document.removeEventListener('click', skipTitleAnimation);
+            }
+
+            // Add event listener for the click to skip the animation
+            document.addEventListener('click', skipTitleAnimation);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿/* Gradient Background */
+body {
+    background: linear-gradient(to right, red, darkblue);
+    color: white; /* Default text color */
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Improves readability */
+}
+
+/* Navbar & Links */
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-word;
+}
+
+a {
+    color: #ffcc00;
+    transition: color 0.3s ease-in-out;
+}
+
+    a:hover {
+        color: #ff9900;
+    }
+
+/* Buttons */
+.btn-primary {
+    color: #fff;
+    background-color: #ff4500;
+    border-color: #cc3700;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    .btn-primary:hover {
+        background-color: #e63900;
+        border-color: #b82e00;
+    }
+
+/* Footer */
+.footer {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Card Styling */
+.card {
+    background: rgba(255, 255, 255, 0.1); /* Transparent effect */
+    color: white; /* Ensures text is readable */
+    border: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Fix for card titles and text appearing white on a white background */
+.card-body {
+    color: black !important; /* Ensures card text is black */
+    background-color: rgba(255, 255, 255, 0.8); /* Adjusted for better readability */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card-title, .card-text {
+    color: black !important; /* Forces text to be black */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Fix for outside text looking gray */
+.container, .main-content, p, h1, h2, h3, h4, h5, h6 {
+    color: white !important;
+}
+
+/* Improves readability on the gradient */
+h1, h2, h3 {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}

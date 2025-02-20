@@ -1,0 +1,146 @@
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.min.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.min.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.rtl.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.rtl.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.rtl.min.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap.rtl.min.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.min.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.min.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.min.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.min.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.min.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.min.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.min.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.min.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.min.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.min.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.min.css
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.min.css.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.bundle.js
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.bundle.js.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.bundle.min.js
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.bundle.min.js.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.esm.js
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.esm.js.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.esm.min.js
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.esm.min.js.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.js
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.js.map
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.min.js
+C:\Users\jose_\.nuget\packages\bootstrap\5.3.3\contentFiles\any\any\wwwroot\js\bootstrap.min.js.map
+wwwroot\css\site.css
+wwwroot\css\style.css
+wwwroot\css\style2.css
+wwwroot\Cursor\MouseCursor1.png
+wwwroot\Cursor\MouseCursor2.png
+wwwroot\Cursor\MouseCursor3.png
+wwwroot\favicon.ico
+wwwroot\Introduction background\Blue_Archive.png
+wwwroot\Introduction background\Chrono_Ark.png
+wwwroot\Introduction background\Dark_Wood.png
+wwwroot\Introduction background\Dohna_Dohna_Lets_Do_Bad_Things_Together.png
+wwwroot\Introduction background\Ender_Lilies_Quietus_of_the_Knights.png
+wwwroot\Introduction background\Frost_Punk.png
+wwwroot\Introduction background\Genshin_Impact.png
+wwwroot\Introduction background\Girls_Frontline_2.png
+wwwroot\Introduction background\Honkai_Impact_3rd.png
+wwwroot\Introduction background\Library_Of_Ruina.png
+wwwroot\Introduction background\Limbus_Company.png
+wwwroot\Introduction background\OMORI.png
+wwwroot\Introduction background\Reverse_Collapse_Code_Name_Bakery.png
+wwwroot\Introduction background\This_War_Of_Mine.png
+wwwroot\Introduction.html
+wwwroot\js\site.js
+wwwroot\lib\bootstrap\dist\css\bootstrap.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+wwwroot\lib\bootstrap\LICENSE
+wwwroot\lib\jquery\dist\jquery.js
+wwwroot\lib\jquery\dist\jquery.min.js
+wwwroot\lib\jquery\dist\jquery.min.map
+wwwroot\lib\jquery\LICENSE.txt
+wwwroot\lib\jquery-validation\dist\additional-methods.js
+wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+wwwroot\lib\jquery-validation\LICENSE.md
+wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
+wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
+wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\Website_BGM\[_Library_Of_Ruina_]_Children_of_the_City.mp3
+wwwroot\Website_BGM\[_Library_Of_Ruina_]_Gone_Angels.mp3
+wwwroot\Website_BGM\「Cyberangel」_-_Honkai_Impact_3.mp3
+wwwroot\Website_BGM\1番輝く星.mp3
+wwwroot\Website_BGM\Artcore_Fluffybunny_-_Rosy_Retrospection.mp3
+wwwroot\Website_BGM\Artcore_Reno_-_Cryptosystem.mp3
+wwwroot\Website_BGM\Artcore_Tsurugi_-_Descenders.mp3
+wwwroot\Website_BGM\Cyberpunk_Edgerunners_I_Really_Want_to_Stay_At_Your_House_by_Rosa_Walton_Music_Video.mp3
+wwwroot\Website_BGM\Delirious_-_Jujutsu_Kaisen.mp3
+wwwroot\Website_BGM\dndndn.dn.mp3
+wwwroot\Website_BGM\Dohna_Dohna_-ドーナドーナのうた(Full OP).mp3
+wwwroot\Website_BGM\Haloweak_NARWHAL_Punishing_Gray_Raven_OST_-_极地暗流 パニシング_グレイレイヴンOfficial.mp3
+wwwroot\Website_BGM\Library_of_Ruina_-_Angela_Realization_Theme.mp3
+wwwroot\Website_BGM\Limitless_Gojo.mp3
+wwwroot\Website_BGM\Malkuth battle.mp3
+wwwroot\Website_BGM\Mili_-_Iron_Lotus.mp3
+wwwroot\Website_BGM\Mili_-_String_Theocracy_Library_of_Ruina_theme_song.mp3
+wwwroot\Website_BGM\Watch_Me.mp3
+wwwroot\Website_BGM\ブルーアーカイブ_Blue_Archive_OST_35._Morose_Dreamer.mp3
+wwwroot\Website_BGM\メズマライザー_初音ミク重音テトSV.mp3
+wwwroot\Website_BGM\廻廻奇譚_-_Eve_MV.mp3
+wwwroot\Website_BGM\美波カワキヲアメクMV.mp3
